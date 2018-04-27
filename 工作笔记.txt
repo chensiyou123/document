@@ -1,0 +1,286 @@
+
+=========================================================================================gitLib密码
+账号：陈思友
+密码：12345678
+=========================================================================================2017-9-5
+1.系统用户表：edusystem.SYSTEM_ACCOUT
+=========================================================================================2017-9-6
+
+1.测试环境
+jdbc.url=jdbc:oracle:thin:@devedu.hanboard.com.cn:11521:testbase
+
+#jdbc.school.username=eduschool
+#jdbc.school.password=eduschool
+
+#========================================system settings=====================
+base.url=localhost:${base.url}
+# ==========================security cas settting==========================
+casServer.url=http://testedu.hanboard.com.cn:7000/cas
+client.url=http://localhost:8085/
+security.logout.url=${casServer.url}/logout?service=${client.url}
+====================================================================================2017-9-10
+2.开发环境
+#jdbc.school.username=eduschool
+#jdbc.school.password=eduschool
+#========================================system settings===================
+base.url=localhost:${base.url}
+# ==========================security cas settting==========================
+casServer.url=http://devedu.hanboard.com.cn:8081/cas
+client.url=http://localhost:8085/
+security.logout.url=${casServer.url}/logout?service=${client.url}
+==================================================================================2017-9-11
+3.前端开发
+  //'http://devedu.hanboard.com.cn:8081' // npm run dev 使用这个
+4前端测试
+   'http://testedu.hanboard.com.cn:7000' // 测试环境使用这个
+=================================================================================2017-10-9
+密云测试前端：
+202行：'http://cloudtest.myedu.gov.cn' // npm run dev 使用这个
+248行： window.server_url_system = 'http://cloudtest.myedu.gov.cn';
+249行： window.server_url_base = 'http://cloudtest.myedu.gov.cn/base';
+256行： window.server_url_newresources="http://cloudtest.myedu.gov.cn/newresources/";
+
+==================================================================================测试账号
+5.密云区测试环境角色
+1.十三中教师：dszxhr：黄蓉；dszxzm：赵敏
+2.十三中管理员：mydszx：
+3.密云区管理员：myqadmin
+=================================================================================2017-9-12
+1.ckplayer 截取播放时间
+vm.learningVideo = CKobject.getObjectById('ckplayer_learningVideo')
+ let status = vm.learningVideo.getStatus();
+ status.time
+
+================================================================================2017-9-14
+ctrl+r:查找替换
+=================================================================================2017-9-14
+路由跳转
+this.$router.push('/newresources/edit_file/' + data.id + "/" + data.typeId)
+================================================================================2017-9-18
+查看远端分之和本地分支
+git branch -a
+基于远端分之创建本地分支并切换到该分支
+git checkout -b csy-dev4 origin/develop
+切换分支
+git checkout test
+===============================================================================2017-9-18
+删除提交
+git push origin :csy-dev4
+===============================================================================2017-9-18
+撤销暂存文件
+git checkout -- readme.txt
+===============================================================================2017-9-20
+发布rpc
+
+
+===============================================================================2017-9-20
+获取当前登录人信息
+window.userInfo.userName
+
+==============================================================================2017-9-21
+把集合中的字段放进另外一个集合
+List<String> ids = actWorks.stream().map(s->s.getId()).collect(Collectors.toList());
+=============================================================================2017-9-21
+把过滤出grades中id在ids中的数据，组成集合放在gr2中
+String gr2 = String.join(",",grades.stream().filter(s->ids2.contains(s.getId())).map(s->s.getName()).distinct().collect(Collectors.toList()));
+===============================================================================计算总数
+ bp = entityList.stream().mapToDouble(s->s.getPrice().doubleValue()).sum();
+===============================================================================逗号分隔字符串
+String url=actAttachments.stream().map(s->s.getScheduleId().trim()).collect(Collectors.joining(","));
+===============================================================================转集合
+List<String> ids = listPS.stream().map(s->s.getId()).distinct().collect(Collectors.toList());
+================================================================================过滤出第一个对象
+ResResourceInfo info = config.getResources().stream().filter(s->StringUtils.equals(s.getGroupId(),"4")).findFirst().orElse(null);
+================================================================================过滤出对象属性
+List<String> listchild = childrens.stream().filter(s->StringUtils.equals(s.getGroupCode(),resResourceInfo.getId())).map(s->s.getId()).collect(Collectors.toList());
+=================================================================================过滤出集合
+List<ResourcePrepareInfo> coursewareList = resourcePrepareInfoList.stream().filter(s->!Strings.isNullOrEmpty(s.getTypeId())&&s.getTypeId().equals("cf50c35abfb24e2ca1289418561e6b9f")).collect(Collectors.toList());
+=================================================================================过滤分组Map的形式统计
+ Map<String, List<ResourceInfo>> collect = resourceInfoList.stream().collect(Collectors.groupingBy(ResourceInfo::getSchoolId));
+ ================================================================================包含过滤
+  types.stream().filter(s -> creatorIds.contains(s.getCreatorId())).collect(Collectors.toList());
+
+==============================================================================2017-9-21
+奇怪的前台时间处理
+vm.postModel.endTime.getTime()
+===============================================================================2017-9-21
+moment(vm.postModel.endTime).format('YYYY-MM-DD HH:mm:ss');时间转化
+=================================== ============================================2017-9-23 
+
+//1.过略统计函数
+
+================================================================================拉姆达表达式js端
+//1.过略函数
+let exist = _.filter(xhr.data.data,function (v) {
+   return v.code == vm.resAccount.courseCode;
+})
+//2.循环函数
+_.each(k,function (v) {
+  vm.resourceInfo.grades.push(v);
+})
+//3.删除函数
+_.remove(type[0].resources,function (v) {
+    return v.id == id
+ });
+ ================================================================================数组合并
+ _.union(vm.postModel.courseList,xhr.data.data)
+ ================================================================================数组去重
+ vm.questionList = _.uniqBy(vm.questionList, 'id');
+ ================================================================================数组合并
+ let questionTypes=_.map(paperSubQuestion,'typeCode');
+ ================================================================================合并计算
+  let count = 0
+ this.questionList.map(i=>{ count += Number(i.score)})
+ ===============================================================================前台统计ids
+ this.tableQuery.filter.existIds=_.map(vm.questionList,'id').join(',')；
+================================================================================提示信息
+================================================================================数组合并、排序
+vm.scopeDataList.concat(tempGradations, tempSchools, tempGrades, tempCourses)
+ _.sortBy(temp1,'questionTypeCode').concat(_.sortBy(temp2,'questionTypeCode'))
+ ===============================================================================提示信息：vm.$message('课程不能为空');
+vm.$message({type:'warning', message:'请上传文件！',})
+this.$confirm(mes, '警告', {type: 'warning'}).then(function () {})
+================================================================================2017-9-27
+
+================================================================================组件通信
+vm.$refs.all.apiNameList(vm.appQid,vm.appQname);
+
+密云教育内网HTTPS://61.50.213.223
+ xxzx002 密码 b31b82b6b7
+xxzxzyz003(密码：xxzxzyz@003)
+xxzxzyz004(密码：xxzxzyz@004)
+================================================================================2017-9-27
+多条件查询
+ <if test="keyWords!=null and keywords!= ''">
+     AND  (so.user_name LIKE  '%'|| #{keyWords}||'%' OR rel.gauge_name= LIKE  '%'|| #{keywords}||'%')
+ </if>
+==============================================================================2017-10-9
+导出数据
+前台：window.location.href = window.server_url_newresources + "actAllotation/exportAllo?" + $.param(vm.filter);
+后台：
+ @RequestMapping(value = "exportAllo", method = RequestMethod.GET)
+ public void exportPlan(HttpServletResponse response, @RequestParam Map filter) {
+   actAllotationService.exportAllo(response, filter);
+ }
+=============================================================================2017=1010
+ <select id="selectTeacherByOrgId" resultType="com.hanboard.archives.module.ArchivesTeaBasicInfo">
+    select t.user_id as userId,t.user_name as userName from eduachives.archives_tea_basicinfo t
+    where t.agency_number in
+     <foreach collection="allOrg" index="index" item="id" open="(" separator="," close=")">
+          #{id}
+     </foreach>
+ </select>
+ 
+ 
+ 
+===========================================================================打包
+mvn deploy -pl rpc-resources -am -Dactive=hanboard -Dmaven.test.skip=true
+===============================================================================================================================================原型图
+互动课堂-客户端：
+http://axure.hanboard.com.cn:8081/interactive-classroom/user/index.html#g=1&p=教学包数据列表查看
+互动课堂-资源平台：
+http://axure.hanboard.com.cn:8081/interactive-classroom/resource-platform/index.html#g=1&p=home- 资源首页
+互动课堂-用户权限：
+http://axure.hanboard.com.cn:8081/interactive-classroom/user-authority-platform/index.html#g=1&p= 首页
+================================================================================================================================================springCloud参考资料
+JPA 的一些关键字查询的大家可以看下这篇文章的介绍
+http://www.ityouknow.com/springboot/2016/08/20/springboot(%E4%BA%94)-spring-data-jpa%E7%9A%84%E4%BD%BF%E7%94%A8.html
+Spring Cloud 相关的可以参考这个比较好的项目：
+https://github.com/sqshq/PiggyMetrics
+JPA 的一些很多用法大家也可以看下这个项目
+https://github.com/cloudfavorites/favorites-web
+这两个项目都还不错
+
+=====================================================================================================================================================本地覆盖远端
+$ git push origin -f
+=====================================================================================================================================================根据当前分支创分支并切换到该分支
+git checkout -b csy-dev
+
+==============================================================================================修改git提交方式
+
+git remote set-url origin git@gitlab.hanboard.com.cn:product/edu-cloud-business/business-platform-frontend.git
+
+==============================================================================================前端获取用户id
+window.userInfo.id
+==============================================================================================去掉字符串中指定字符
+replace(/./g, "")
+
+===============================================================================================测试地址
+http://microtest.hanboard.com.cn:8084/#/resource/personal/index/1
+===============================================================================================测试数据库
+
+密云访问地址：
+http://cloudmsa.myedu.gov.cn/;jsessionid=37F0A5E81EB7559C353E6E07D3A598DE;jsessionid=7590689491653C599181E7A477F2A067#/social/personnel/list?userId=0138316891594816bab321318a991922 
+u:jiaoshi1
+u:weimengyuan
+u:dszxlk
+
+vpn miyun
+url:HTTPS://61.50.213.223 
+u1:xxzx002 p1:b31b82b6b7
+u2:xxzxzyz003 p2:xxzxzyz@003
+u3:xxzxzyz004 p3:xxzxzyz@004
+
+=======================================
+docker-compose pull resource 
+ docker-compose up -d resource 
+ docker-compose logs -f --tail=1000 resource 
+
+===========================================oracle修改时间
+update ACTIVITIES_NEW set SUBMISSION_DATE = to_date('2018-04-09 170000','yyyy-mm-dd hh24miss') where id = 'd279a45ff531468b9feebe52c9f8d462';
+
+===========================================docker操作
+cd docker/docker-compose//进入docker目录
+z hbd:进入hbd目录
+docker-compose logs -f --tail=1000 resource ：查看日志
+
+
+============================================密云msc
+http://cloudmsa.myedu.gov.cn/;jsessionid=37F0A5E81EB7559C353E6E07D3A598DE;jsessionid=7590689491653C599181E7A477F2A067#/social/personnel/list?userId=0138316891594816bab321318a991922 
+
+EXISTS：存在函数的使用
+
+
+=============================================密云调试
+-Dspring.profiles.active=test -Deureka.client.register-with-eureka=false -DCONFIG_URL=http://117.116.30.1:8888 
+==============================================非密云调试
+-Dspring.profiles.active=test
+
+===============================================公司技术视频
+后端开发的同事注意下，上周及之前培训的 Docker 相关系列 PPT 和视频可以通过下面的地址查看：
+PPT：
+http://share.hanboard.com.cn:81/docker-practice-01.html 
+
+http://share.hanboard.com.cn:81/docker-practice-02.html 
+
+http://share.hanboard.com.cn:81/docker-practice-03.html 
+
+视频：
+http://share.hanboard.com.cn:81/video/docker/ 
+=====================================================solory查询地址
+ window.systemParameter.THIRDPARTY_SYSTEM_URL = '/gateway/thirdParty'
+=============================================xsheel5支持软件安装地址
+http://www.microsoft.com/zh-CN/download/details.aspx?id=30679 
+
+=============================================路由跳转
+@click="$router.push('/resource/platform/details/package/'+scope.row.id)
+ vm.$router.push('/resource/activity_audit/details_see/'+item.id+'/1')
+==============================================合并其他分支
+$ git merge origin/resource-develop
+==============================================创建并切换到分支
+$ git checkout -b csy-dev
+==============================================安装淘宝镜像
+npm install -g cnpm --registry=http://registry.npm.taobao.org
+==============================================安装脚手架工具
+npm install -g vue-cli
+=============================================创建vue项目
+vue init  webpack +项目名
+=============================================本地关联github
+git remote add origin https://github.com/chensiyou123/fromtend.git
+==============================================代码推到远程仓库
+git pull origin master 
+
+
+
+
+ 
