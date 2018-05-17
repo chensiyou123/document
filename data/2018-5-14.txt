@@ -1,0 +1,14 @@
+工作任务：
+
+知识增长：
+1.新建文件夹
+2.在该文件夹打开git，执行npm init函数
+3.添加项目依赖：vue、vue-loader。。。
+4.用idea打开工程,新建src目录并在该目录下建立App.vue文件
+5.新建webpack.config.js文件并在该文件中编写文件入库和出口
+6.
+ -1.新建index.js文件，在该文件中引入App.vue
+ -2.创建div并且把引入的vue挂载到该div上
+ -3.把该div添加到该文件的body元素内
+7.在pack.json中指定添加wenpack.config.js
+8.运行项目
